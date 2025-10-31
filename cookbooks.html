@@ -1,0 +1,561 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Craft | Cookbooks</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <style>
+    :root {
+        --primary-color: #2D7D9A;
+        --primary-hover: #1E5F7A;
+        --secondary-color: #FF6B6B;
+        --accent-color: #A8DADC;
+        --neutral-bg: #F8F9FA;
+        --text-color: #495057;
+        --light-bg: #FFFFFF;
+        --pastel-bg: #E9ECEF;
+        --light-blue: #B3E5FC;
+    }
+    
+    body {
+        background: 
+            linear-gradient(135deg, var(--neutral-bg) 0%, var(--pastel-bg) 50%, var(--light-blue) 100%),
+            radial-gradient(circle at 30% 30%, rgba(45, 125, 154, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+            radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.1) 0%, transparent 50%),
+            url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==') repeat,
+            url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgzMywgMTUwLCAyNDMsIDAuMDUpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat;
+        background-size: cover, 200px 200px, 150px 150px, 100px 100px, 150px 150px, 200px 200px;
+        background-blend-mode: overlay;
+        color: var(--text-color);
+        font-family: 'Nunito', sans-serif;
+        line-height: 1.6;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    body::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+        animation: shine 6s infinite ease-in-out;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    body::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: 
+            radial-gradient(circle at 20% 20%, rgba(45, 125, 154, 0.25) 3px, transparent 3px),
+            radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.2) 2px, transparent 2px),
+            radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.2) 4px, transparent 4px),
+            radial-gradient(circle at 10% 90%, rgba(179, 229, 252, 0.3) 5px, transparent 5px);
+        background-size: 120px 120px, 180px 180px, 250px 250px, 150px 150px;
+        animation: floatParticles 12s infinite linear;
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    @keyframes shine {
+        0% { transform: translateX(-100%); }
+        50% { transform: translateX(0%); }
+        100% { transform: translateX(100%); }
+    }
+
+    @keyframes floatParticles {
+        0% { transform: translateY(0) rotate(0deg); }
+        33% { transform: translateY(-30px) rotate(120deg); }
+        66% { transform: translateY(10px) rotate(240deg); }
+        100% { transform: translateY(0) rotate(360deg); }
+    }
+
+    body > * {
+        position: relative;
+        z-index: 2;
+    }
+
+    .navbar {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--accent-color);
+    }
+    .navbar-brand {
+        font-family: 'Pacifico', cursive;
+        font-size: 2rem;
+        color: var(--primary-color) !important;
+    }
+    .navbar-brand img {
+        border-radius: 50%;
+        border: 3px solid var(--primary-hover);
+        box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+    }
+    .nav-link {
+        color: var(--text-color) !important;
+        font-weight: 500;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .nav-link:hover {
+        color: var(--primary-color) !important;
+        transform: translateY(-2px);
+    }
+    .btn-primary-style {
+        background: var(--primary-color);
+        border: none;
+        color: var(--light-bg);
+        border-radius: 30px;
+        padding: 0.5rem 1.5rem;
+        transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+        box-shadow: 0 4px 10px rgba(45, 125, 154, 0.3);
+    }
+    .btn-primary-style:hover {
+        background: var(--primary-hover);
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(45, 125, 154, 0.4);
+    }
+
+    .hero-section {
+        background: var(--neutral-bg);
+        padding: 4rem 0;
+        text-align: center;
+        border-bottom: 1px solid #dee2e6;
+    }
+    .hero-section h1 {
+        color: var(--text-color);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+    .hero-section p {
+        color: var(--text-color);
+        font-size: 1.2rem;
+    }
+
+    .cookbook-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        border: none;
+        border-radius: 20px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        border: 1px solid var(--accent-color);
+    }
+    .cookbook-card:hover {
+        transform: translateY(-15px) rotate(1deg);
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        filter: brightness(1.05);
+    }
+
+    .cookbook-card .card-img-top {
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease, filter 0.3s ease;
+        filter: brightness(1.1) contrast(1.1) saturate(1.3);
+    }
+    .cookbook-card:hover .card-img-top {
+        transform: scale(1.1);
+        filter: brightness(1.2) contrast(1.2) saturate(1.4);
+    }
+
+    .card-overlay {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background: rgba(255, 107, 107, 0.9);
+        color: var(--light-bg);
+        padding: 0.5rem;
+        border-radius: 10px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    }
+
+    .cookbook-card .card-body {
+        padding: 1.5rem;
+    }
+    .cookbook-card .card-title {
+        color: var(--text-color);
+        font-weight: 700;
+        font-size: 1.2rem;
+    }
+    .cookbook-card .card-text {
+        color: var(--text-color);
+        margin-bottom: 1rem;
+    }
+
+    .btn-primary-style {
+        background: var(--primary-color);
+        border: none;
+        color: var(--light-bg);
+        border-radius: 30px;
+        font-weight: 600;
+        transition: background 0.3s ease;
+    }
+    .btn-primary-style:hover {
+        background: var(--primary-hover);
+    }
+
+    .badge {
+        font-weight: 600;
+        padding: 0.5em 1em;
+        border-radius: 20px;
+        margin-right: 0.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .text-bg-warning { background: var(--secondary-color) !important; color: var(--text-color) !important; }
+    .text-bg-danger { background: #E76F51 !important; color: var(--light-bg) !important; }
+    .text-bg-success { background: var(--accent-color) !important; color: var(--light-bg) !important; }
+    .text-bg-primary { background: #264653 !important; color: var(--light-bg) !important; }
+    .text-bg-info { background: #F4A261 !important; color: var(--text-color) !important; }
+    .text-bg-dark { background: #8D6E63 !important; color: var(--light-bg) !important; }
+
+    .footer-section {
+        background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        padding: 50px 0;
+        margin-top: 6rem;
+        color: var(--light-bg);
+        position: relative;
+    }
+    .footer-section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat;
+        opacity: 0.1;
+        z-index: 0;
+    }
+    .footer-section > * {
+        position: relative;
+        z-index: 1;
+    }
+    .social-icon {
+        color: var(--light-bg);
+        font-size: 1.5rem;
+        margin: 0 0.5rem;
+        transition: color 0.3s ease, transform 0.2s ease;
+    }
+    .social-icon:hover {
+        color: var(--secondary-color);
+        transform: scale(1.2);
+    }
+
+    h1, h2 {
+        color: var(--text-color);
+        font-weight: 700;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+        .hero-section h1 {
+            font-size: 2.5rem;
+        }
+        .hero-section p {
+            font-size: 1rem;
+        }
+    }
+</style>
+
+
+
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <i class="fa-solid fa-utensils me-2"></i> Kitchen Craft
+            <img src="p1.png" alt="Kitchen Craft Logo" style="height: 50px; width: 50px; margin-left: 10px;">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cookbooks.html"><i class="fa-solid fa-book me-1"></i>Cookbooks</a></li>
+                <li class="nav-item"><a class="nav-link" href="ingredients.html"><i class="fa-solid fa-carrot me-1"></i>Ingredients</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle me-1"></i>About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user-shield me-1"></i>Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="admin-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
+                        <li><a class="dropdown-item" href="admin-management.html">Management</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link btn btn-primary-style ms-lg-3" href="signup.html"><i class="fa-solid fa-user-plus me-1"></i>Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+    
+
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Welcome to Our Cookbooks</h1>
+            <p>Discover curated collections of recipes that inspire creativity in the kitchen. From quick meals to exotic cuisines, find your next favorite dish.</p>
+        </div>
+    </section>
+
+    <main class="container my-5">
+        <h2 class="text-center mb-5">Explore Our Curated Recipe Collections</h2>
+        
+        <div class="row row-cols-1 row-cols-md-2 g-4" id="cookbook-grid">
+    <!-- Cookbook Cards (Adapted with overlays and badges for consistency) -->
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="health.jpg" class="card-img-top" alt="Hearty stew or roasted vegetables">
+            <div class="card-overlay">Cozy Meals</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Harvest & Hearth: Seasonal Comfort</h5>
+                <p class="card-text">A collection of recipes focused on <strong>slow cooking and cozy meals</strong> using the best of autumn and winter produce.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 50 Recipes</li>
+                    <li><i class="fa-solid fa-leaf me-2"></i> <strong>Focus: Seasonal Produce</strong></li>
+                </ul>
+                <a href="seasonal.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-warning">Comfort Food</span> 
+                <span class="badge text-bg-success">Vegetarian</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="quickprep.jpg" class="card-img-top" alt="Pasta dish ready in under 30 minutes">
+            <div class="card-overlay">Quick Prep</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Lightning Fast: 30-Minute Meals</h5>
+                <p class="card-text"><strong>Maximum flavor, minimal fuss.</strong> Simple, fast recipes designed for busy weeknights.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 45 Recipes</li>
+                    <li><i class="fa-solid fa-bolt me-2"></i> <strong>Avg Prep Time: 10 mins</strong></li>
+                </ul>
+                <a href="30min.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-info">Quick Meal</span> 
+                <span class="badge text-bg-primary">Variety</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="bake.jpg" class="card-img-top" alt="Freshly baked cookies and simple baked goods">
+            <div class="card-overlay">Beginner Friendly</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Flour Power: Essential Baking Basics</h5>
+                <p class="card-text"><strong>Foundational techniques</strong> for cakes, cookies, and breads. Start your baking journey here!</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 30 Recipes</li>
+                    <li><i class="fa-solid fa-graduation-cap me-2"></i> <strong>Skill Level: Beginner</strong></li>
+                </ul>
+                <a href="baking.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-warning">Baking</span> 
+                <span class="badge text-bg-success">Desserts</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="indian.jpg" class="card-img-top" alt="Indian curries with rice and naan">
+            <div class="card-overlay">Regional Flavors</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Spice Routes: North, South & West Indian</h5>
+                <p class="card-text">A comprehensive collection of classics, street food, and regional specialties from across India.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 80 Recipes</li>
+                    <li><i class="fa-solid fa-chili-pepper me-2"></i> <strong>Regional Cuisine Focus</strong></li>
+                </ul>
+                <a href="indian.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-danger">Indian</span> 
+                <span class="badge text-bg-warning">Spicy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="indiandesserts.jpg" class="card-img-top" alt="Indian desserts like ladoo or jalebi">
+            <div class="card-overlay">Sweet Treats</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Sweet Endings & Thirst Quenchers 🥛</h5>
+                <p class="card-text">Authentic <strong>Indian sweets</strong> (mithai) and refreshing beverages (chai, lassi, sherbet) from festivals and daily life.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 40 Recipes</li>
+                    <li><i class="fa-solid fa-ice-cream me-2"></i> <strong>Category: Dessert & Drink</strong></li>
+                </ul>
+                <a href="indian-desserts.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-warning">Desserts</span> 
+                <span class="badge text-bg-dark">Drinks</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="italian.jpg" class="card-img-top" alt="Selection of Italian pasta and ingredients">
+            <div class="card-overlay">Regional Italian</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">A Taste of Italy: North, Central, South</h5>
+                <p class="card-text">Explore regional distinctions: creamy Northern risotto, hearty Central pasta, and light Southern seafood dishes.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 75 Recipes</li>
+                    <li><i class="fa-solid fa-pizza-slice me-2"></i> <strong>Cuisine: Italian</strong></li>
+                </ul>
+                <a href="italian.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-danger">Italian</span> 
+                <span class="badge text-bg-warning">Regional</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="maxican.jpg" class="card-img-top" alt="Mexican tacos or street food">
+            <div class="card-overlay">Fiesta Flavors</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Sizzling Fiesta: Essential Mexican</h5>
+                <p class="card-text">Master tacos, enchiladas, tamales, and authentic sauces with a mix of quick and traditional recipes.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 55 Recipes</li>
+                    <li><i class="fa-solid fa-hat-cowboy me-2"></i> <strong>Cuisine: Mexican</strong></li>
+                </ul>
+                <a href="mexican.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-primary">Mexican</span> 
+                <span class="badge text-bg-warning">Spicy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="thai.jpg" class="card-img-top" alt="Thai Pad Thai or curry dish">
+            <div class="card-overlay">Balanced Spice</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Balance & Spice: Classic Thai Food</h5>
+                <p class="card-text">A balance of sweet, sour, salty, and spicy. Includes popular curries, noodle dishes, and fresh salads.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 40 Recipes</li>
+                    <li><i class="fa-solid fa-lemon me-2"></i> <strong>Cuisine: Thai</strong></li>
+                </ul>
+                <a href="thai.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-dark">Thai</span> 
+                <span class="badge text-bg-warning">Spicy</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="breakfast.jpg" class="card-img-top" alt="Pancakes with fruit or breakfast eggs">
+            <div class="card-overlay">Morning Delights</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">Rise & Shine: Breakfast & Brunch</h5>
+                <p class="card-text">Sweet and savory recipes to start your day, from quick weekday options to luxurious weekend brunches.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 35 Recipes</li>
+                    <li><i class="fa-solid fa-mug-hot me-2"></i> <strong>Meal Time: Breakfast</strong></li>
+                </ul>
+                <a href="breakfast.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-warning">Breakfast</span> 
+                <span class="badge text-bg-success">Quick</span>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col">
+        <div class="card cookbook-card shadow-sm">
+            <img src="maincourse.jpg" class="card-img-top" alt="Plated dinner course">
+            <div class="card-overlay">Hearty Mains</div>
+            <div class="card-body">
+                <h5 class="card-title fw-bold">The Main Course: Lunch & Dinner Ideas</h5>
+                <p class="card-text">Hearty, satisfying meals for midday and evening. Focuses on mains that pair well with simple sides.</p>
+                <ul class="list-unstyled small">
+                    <li><i class="fa-solid fa-layer-group me-2"></i> 70 Recipes</li>
+                    <li><i class="fa-solid fa-utensils me-2"></i> <strong>Meal Time: Dinner</strong></li>
+                </ul>
+                <a href="maincourse.html" class="btn btn-primary-style w-100 mt-2">View Collection</a>
+            </div>
+            <div class="card-footer bg-transparent text-end">
+                <span class="badge text-bg-primary">Dinner</span> 
+                <span class="badge text-bg-success">Variety</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+</main>
+
+
+    <footer class="footer-section">
+        <div class="container text-center">
+            <h2 class="mb-3 text-white">Kitchen Craft</h2>
+            <p class="small text-white-50">Cook Smarter, Not Harder. All Rights Reserved &copy; 2025</p>
+
+            <div class="mt-4">
+                   <a href="https://www.facebook.com/" class="social-icon" aria-label="Follow us on Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/accounts/login/?hl=en" class="social-icon" aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://myaccount.google.com/" class="social-icon" aria-label="Follow us on Google">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="social-icon" aria-label="Contact us via Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
+    </html> 
+
+
+
+    

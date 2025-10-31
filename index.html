@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kitchen Craft | Home - Fresh Recipes</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+   <style>
+        
+        :root {
+            --primary-color: #2D7D9A;    
+            --primary-hover: #1E5F7A;   
+            --secondary-color: #FF6B6B; 
+            --accent-color: #A8DADC;    
+            --neutral-bg: #F8F9FA;  
+            --text-color: #495057;     
+            --light-bg: #FFFFFF;        
+            --pastel-bg: #E9ECEF;     
+            --light-blue: #B3E5FC;     
+        }
+
+        
+        body {
+            background: 
+                linear-gradient(135deg, var(--neutral-bg) 0%, var(--pastel-bg) 50%, var(--light-blue) 100%),
+                radial-gradient(circle at 30% 30%, rgba(45, 125, 154, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==') repeat,
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgzMywgMTUwLCAyNDMsIDAuMDUpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat; /* Subtle wave pattern for depth */
+            background-size: cover, 200px 200px, 150px 150px, 100px 100px, 150px 150px, 200px 200px;
+            background-blend-mode: overlay;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+      
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+            animation: shine 6s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+       
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(45, 125, 154, 0.25) 3px, transparent 3px),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.2) 4px, transparent 4px),
+                radial-gradient(circle at 10% 90%, rgba(179, 229, 252, 0.3) 5px, transparent 5px); 
+            background-size: 120px 120px, 180px 180px, 250px 250px, 150px 150px;
+            animation: floatParticles 12s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes floatParticles {
+            0% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+  
+        body > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        .navbar-brand {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: var(--primary-color) !important;
+        }
+        .navbar-brand img {
+            border-radius: 50%;
+            border: 3px solid var(--primary-hover);
+            box-shadow: 0 0 10px rgba(6, 86, 102, 0.3);
+        }
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        .btn-primary-style {
+            background: var(--primary-color);
+            border: none;
+            color: var(--light-bg);
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(45, 125, 154, 0.3);
+        }
+        .btn-primary-style:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(45, 125, 154, 0.4);
+        }
+
+        
+        .input-group {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        .input-group-text {
+            background: var(--accent-color);
+            color: var(--text-color);
+            border: none;
+        }
+        #recipe-search-input {
+            border: none;
+            padding: 1rem;
+            font-size: 1rem;
+            background: transparent;
+            color: var(--text-color);
+        }
+        #recipe-search-input:focus {
+            box-shadow: none;
+            outline: 2px solid var(--primary-color);
+        }
+        
+        .recipe-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--accent-color);
+        }
+        .recipe-card:hover {
+            transform: translateY(-15px) rotate(1deg);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            filter: brightness(1.05);
+        }
+
+        .card-img-top {
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(1.1) contrast(1.1) saturate(1.3);
+        }
+        .recipe-card:hover .card-img-top {
+            transform: scale(1.1);
+            filter: brightness(1.2) contrast(1.2) saturate(1.4);
+        }
+
+        
+        .card-overlay {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 107, 107, 0.9);
+            color: var(--light-bg);
+            padding: 0.5rem;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+        .card-title {
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        .recipe-info {
+            color: var(--primary-color);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        .card-text {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        
+        .btn-primary-style {
+            background: var(--primary-color);
+            border: none;
+            color: var(--light-bg);
+            border-radius: 30px;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+        .btn-primary-style:hover {
+            background: var(--primary-hover);
+        }
+
+        
+        .badge {
+            font-weight: 600;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .text-bg-warning { background: var(--secondary-color) !important; color: var(--light-bg) !important; }
+        .text-bg-danger { background: var(--secondary-color) !important; color: var(--light-bg) !important; }
+        .text-bg-success { background: var(--accent-color) !important; color: var(--text-color) !important; }
+        .text-bg-primary { background: var(--primary-color) !important; color: var(--light-bg) !important; }
+        .text-bg-info { background: var(--secondary-color) !important; color: var(--text-color) !important; }
+        .text-bg-dark { background: var(--pastel-bg) !important; color: var(--text-color) !important; }
+
+        
+        #loadMoreBtn {
+            background: var(--primary-color);
+            color: var(--light-bg);
+            border: none;
+            border-radius: 30px;
+            padding: 0.75rem 2rem;
+            font-weight: 600;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(45, 125, 154, 0.3);
+        }
+        #loadMoreBtn:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(45, 125, 154, 0.4);
+        }
+
+        
+        .footer-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 50px 0;
+            margin-top: 6rem;
+            color: var(--light-bg);
+            position: relative;
+        }
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .footer-section > * {
+            position: relative;
+            z-index: 1;
+        }
+        .social-icon {
+            color: var(--light-bg);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .social-icon:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        
+        h1 {
+            color: var(--text-color);
+            font-weight: 700;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+        }
+
+        
+        
+.carousel-container {
+    position: relative;
+    width: 100%;
+    height: 60vh;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    background: linear-gradient(135deg, var(--neutral-bg) 0%, var(--pastel-bg) 50%, var(--light-blue) 100%);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.05);
+    border-radius: 15px;
+}
+
+#kitchenCarousel .carousel-item img {
+    height: 60vh;
+    object-fit: cover;
+    filter: brightness(1.2) contrast(1.2) saturate(1.3);
+}
+
+#kitchenCarousel .carousel-caption {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 1.5rem;
+    bottom: 20%;
+    left: 10%;
+    right: 10%;
+    text-align: left;
+    color: var(--text-color);
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+#kitchenCarousel .carousel-caption h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin: 0 0 1rem 0;
+    letter-spacing: 1px;
+}
+
+#kitchenCarousel .carousel-caption p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 0;
+    line-height: 1.6;
+}
+
+#kitchenCarousel .carousel-control-prev-icon,
+#kitchenCarousel .carousel-control-next-icon {
+    background-color: rgba(45, 125, 154, 0.8);
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+#kitchenCarousel .carousel-indicators button {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+
+#kitchenCarousel .carousel-indicators .active {
+    background-color: var(--primary-color);
+}
+
+@media (max-width: 768px) { .carousel-container { height: 50vh; } #kitchenCarousel .carousel-item img { height: 50vh; } #kitchenCarousel .carousel-caption h1 { font-size: 2rem; } #kitchenCarousel .carousel-caption p { font-size: 1rem; } } #save-btn { background: linear-gradient(145deg, #2D7D9A, #1E5F7A); color: #FFFFFF; padding: 0.55rem 1rem; font-weight: 700; font-size: 0.85rem; border-radius: 20px; cursor: pointer; box-shadow: 4px 4px 7px #A8DADC, -4px -4px 7px #FFFFFF; transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease; }
+
+#save-btn.saved { background: linear-gradient(145deg, #FF6B6B, #E55A5A); color: #FFFFFF; box-shadow: 4px 4px 7px #A8DADC, -4px -4px 7px #FFFFFF; }
+
+#save-btn:hover { background: linear-gradient(145deg, #1E5F7A, #0F4A5F); transform: scale(1.05); color: #FFFFFF; }
+
+#save-btn.saved:hover { background: linear-gradient(145deg, #E55A5A, #CC4848); transform: scale(1.05); color: #FFFFFF; }
+
+#toggle-nutrition-btn { background: linear-gradient(145deg, #FF6B6B, #E55A5A); color: #FFFFFF; padding: 0.35rem 1rem; font-weight: 700; font-size: 0.85rem; border-radius: 20px; cursor: pointer; box-shadow: 4px 4px 7px #A8DADC, -4px -4px 7px #FFFFFF; transition: background 0.3s ease, transform 0.2s ease, color 0.3s ease; }
+
+#toggle-nutrition-btn:hover { background: linear-gradient(145deg, #E55A5A, #CC4848); color: #FFFFFF; transform: scale(1.05); } #save-btn, #toggle-nutrition-btn { border: none; outline: none; box-shadow: none; }
+
+#save-btn:focus, #toggle-nutrition-btn:focus { outline: none; box-shadow: 0 0 5px rgba(45,125,154,0.6); } 
+</style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <i class="fa-solid fa-utensils me-2"></i> Kitchen Craft
+            <img src="p1.png" alt="Kitchen Craft Logo" style="height: 50px; width: 50px; margin-left: 10px;">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cookbooks.html"><i class="fa-solid fa-book me-1"></i>Cookbooks</a></li>
+                <li class="nav-item"><a class="nav-link" href="ingredients.html"><i class="fa-solid fa-carrot me-1"></i>Ingredients</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle me-1"></i>About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user-shield me-1"></i>Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
+                        <li><a class="dropdown-item" href="admin-management.html">Management</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link btn btn-primary-style ms-lg-3" href="signup.html"><i class="fa-solid fa-user-plus me-1"></i>Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+      <main class="container my-5">
+        <h1 class="text-center mb-5">Explore Our Fresh Kitchen Recipes 🥗</h1>
+
+        
+        <div class="row mb-5 justify-content-center">
+            <div class="col-12 col-lg-8">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-text" id="search-icon">
+                        <i class="fa-solid fa-search"></i>
+                    </span>
+                    <input type="text" 
+                            class="form-control" 
+                            id="recipe-search-input" 
+                            placeholder="Search recipes by title or ingredient (e.g., 'Paneer' or 'Black Beans')...">
+                </div>
+            </div>
+        </div>
+
+
+    
+
+<div class="carousel-container">
+    <div id="kitchenCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="p2.jpg" class="d-block w-100" alt="Welcome to Kitchen Craft" onerror="this.src='https://via.placeholder.com/800x400/ff8c42/ffffff?text=Welcome+to+Kitchen+Craft'">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Welcome to Kitchen Craft</h1>
+                    <p>Discover fresh, delicious recipes crafted for every home cook. Let's get cooking!</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="p3.jpg" class="d-block w-100" alt="Explore Fresh Recipes" onerror="this.src='https://via.placeholder.com/800x400/f4a261/264653?text=Explore+Fresh+Recipes'">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Explore Fresh Recipes</h1>
+                    <p>From spicy curries to quick vegan meals, find inspiration for your next dish.</p>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img src="p4.jpg" class="d-block w-100" alt="Get Cooking Today" onerror="this.src='https://via.placeholder.com/800x400/2a9d8f/ffffff?text=Get+Cooking+Today'">
+                <div class="carousel-caption d-none d-md-block">
+                    <h1>Get Cooking Today</h1>
+                    <p>Join our community of food lovers and start your culinary journey now.</p>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#kitchenCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#kitchenCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#kitchenCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#kitchenCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#kitchenCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+    </div>
+</div>
+
+
+   
+
+  
+  
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" id="recipe-grid">
+            
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="paneertika.jpg" class="card-img-top" alt="Paneer Tikka Masala">
+                    <div class="card-overlay">Quick & Spicy</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Spicy Paneer Tikka Masala</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 45 mins | 
+                            <i class="fa-solid fa-users"></i> 4 Servings
+                        </p>
+                        <p class="card-text">Soft marinated paneer cheese in a rich, creamy, and spicy tomato gravy.</p>
+                        <a href="first.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+                      <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+
+                        <span class="badge text-bg-warning">Vegetarian</span> 
+                        <span class="badge text-bg-danger">Indian</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="tacos.jpg" class="card-img-top" alt="Spicy Black Bean Tacos">
+                    <div class="card-overlay">Protein-Packed</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Spicy Black Bean Tacos</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 30 mins | 
+                            <i class="fa-solid fa-users"></i> 6 Tacos
+                        </p>
+                        <p class="card-text">Quick and protein-rich tacos with spiced black beans, corn, and avocado.</p>
+                        <a href="second.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+
+                              <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+
+                          
+                        <span class="badge text-bg-success">Vegetarian</span> 
+                        <span class="badge text-bg-primary">Mexican</span> 
+                    </div>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="chana.jpg" class="card-img-top" alt="Quick Chana Masala">
+                    <div class="card-overlay">One-Pot Wonder</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Quick Chana Masala (Chickpea Curry)</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 35 mins | 
+                            <i class="fa-solid fa-users"></i> 4 Servings
+                        </p>
+                        <p class="card-text">A speedy, flavorful chickpea curry with ginger and garam masala.</p>
+                        <a href="third.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+
+                              <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+                        <span class="badge text-bg-success">Vegetarian</span>
+                        <span class="badge text-bg-danger">Indian</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="burrito.jpg" class="card-img-top" alt="Vegetarian Burrito Bowl">
+                    <div class="card-overlay">No-Cook Easy</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Hearty Veggie Burrito Bowl</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 20 mins | 
+                            <i class="fa-solid fa-users"></i> 2 Servings
+                        </p>
+                        <p class="card-text">A fresh, vibrant bowl with rice, beans, salsa, and plenty of veggies. Minimal cooking required!</p>
+                        <a href="fourth.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+
+                              <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+                        <span class="badge text-bg-info">Quick Meal</span>
+                        <span class="badge text-bg-primary">Mexican</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="naan.jpg" class="card-img-top" alt="Homemade Garlic Naan">
+                    <div class="card-overlay">Bread Lover's Delight</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Homemade Garlic Naan Bread</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 2 hrs 30 mins | 
+                            <i class="fa-solid fa-users"></i> 6 Naan
+                        </p>
+                        <p class="card-text">Pillowy, soft Indian flatbread brushed with garlic butter.</p>
+                        <a href="fifth.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+
+                              <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+                        <span class="badge text-bg-warning">Vegetarian</span>
+                        <span class="badge text-bg-danger">Indian</span>
+                    </div>
+                </div>
+            </div>
+                
+            <div class="col">
+                <div class="card recipe-card h-100">
+                    <img src="horchata.jpg" class="card-img-top" alt="Refreshing Mexican Horchata"> 
+                    <div class="card-overlay">Cool Drink</div>
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title">Refreshing Mexican Horchata 🥛</h5>
+                        <p class="recipe-info">
+                            <i class="fa-solid fa-clock"></i> 10 mins prep (4 hrs soak) | 
+                            <i class="fa-solid fa-users"></i> 4 Glasses
+                        </p>
+                        <p class="card-text">A creamy, sweet rice milk beverage flavored with cinnamon.</p>
+                        <a href="sixth.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+                    </div>
+                    <div class="card-footer bg-transparent text-end">
+                              <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+                        <span class="badge text-bg-dark"> child Drink</span>
+                        <span class="badge text-bg-primary">Mexican</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-center my-4">
+               
+  
+  
+  <div class="text-center my-4">
+    <button id="loadMoreBtn" class="btn btn-outline-primary-style btn-lg px-5 shadow-sm">Load More Recipes ⬇️</button>
+  </div>
+</div>
+
+
+</main>
+
+
+    
+    <footer class="footer-section">
+        <div class="container text-center">
+            <h2 class="mb-3 text-white">Kitchen Craft</h2>
+            <p class="small text-white-50">Cook Smarter, Not Harder. All Rights Reserved &copy; 2025</p>
+
+            <div class="mt-4">
+                <a href="https://www.facebook.com/" class="social-icon" aria-label="Follow us on Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/accounts/login/?hl=en" class="social-icon" aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://myaccount.google.com/" class="social-icon" aria-label="Follow us on Google">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="social-icon" aria-label="Contact us via Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  
+  let loadedCards = 0;
+  const totalCards = 12;
+  const batchSize = 6;
+  document.getElementById('loadMoreBtn').addEventListener('click', () => {
+    const container = document.getElementById('recipe-grid');
+    const newCards = [
+   
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="aloogobi.jpg" class="card-img-top" alt="Aloo Gobi">
+          <div class="card-overlay">Classic Curry</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Aloo Gobi</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 30 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Classic potato and cauliflower curry cooked with ginger, turmeric & cumin.</p>
+            <a href="seventh.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="paneerbhurji.jpg" class="card-img-top" alt="Paneer Bhurji">
+          <div class="card-overlay">Protein-Rich</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Paneer Bhurji</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 20 mins |
+              <i class="fa-solid fa-users"></i> 3 Servings
+            </p>
+            <p class="card-text">Scrambled paneer with onion, tomato & spices. Quick, protein-rich, and tasty.</p>
+            <a href="eight.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="pulao.jpg" class="card-img-top" alt="Vegetable Pulao">
+          <div class="card-overlay">One-Pot Rice</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Vegetable Pulao</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 30 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Fragrant rice with fresh mixed veggies and whole spices, ready in one pot.</p>
+            <a href="nine.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-info">Quick Meal</span>
+          </div>
+        </div>
+      </div>`,
+
+   `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="tomatodal.jpg" class="card-img-top" alt="Tomato Dal">
+          <div class="card-overlay">Comforting Lentils</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Tomato Dal</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 25 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Lentils cooked with tomatoes, tempered with mustard seeds & curry leaves.</p>
+            <a href="ten.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-primary">South Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="palakpaneer.jpg" class="card-img-top" alt="Palak Paneer">
+          <div class="card-overlay">Green Goodness</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Palak Paneer</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 35 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Paneer cubes in creamy spinach, ginger and garlic sauce. Pairs with naan.</p>
+            <a href="eleven.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+   
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="chanamasala.jpg" class="card-img-top" alt="Chana Masala">
+          <div class="card-overlay">Spicy Chickpeas</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Chana Masala</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 40 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Chickpeas simmered in onion-tomato gravy, flavored with garam masala.</p>
+            <a href="twelve.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-success">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="bainganbharta.jpg" class="card-img-top" alt="Baingan Bharta">
+          <div class="card-overlay">Smoky Eggplant</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Baingan Bharta</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 35 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+           </p>
+            <p class="card-text">Smoky mashed eggplant cooked with onions, tomatoes, and spices. Best with roti.</p>
+            <a href="thirteen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+   
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="jeerarice.jpg" class="card-img-top" alt="Jeera Rice">
+          <div class="card-overlay">Simple Side</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Jeera Rice</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 20 mins |
+              <i class="fa-solid fa-users"></i> 3 Servings
+            </p>
+            <p class="card-text">Fragrant basmati rice sautéed with cumin seeds and ghee. Perfect side dish.</p>
+            <a href="fourteen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-info">Quick Meal</span>
+          </div>
+        </div>
+      </div>`,
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="tofustirfry.jpg" class="card-img-top" alt="Tofu Stir Fry">
+          <div class="card-overlay">Vegan Protein</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Tofu Stir Fry</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 25 mins |
+              <i class="fa-solid fa-users"></i> 2 Servings
+            </p>
+            <p class="card-text">Pan-fried tofu tossed with bell peppers, soy sauce, and garlic for an easy protein-packed meal.</p>
+            <a href="fifteen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-success">Vegetarian</span>
+            <span class="badge text-bg-dark">Asian</span>
+          </div>
+        </div>
+      </div>`,
+
+      
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="bhindimasala.jpg" class="card-img-top" alt="Bhindi Masala">
+          <div class="card-overlay">Crispy Okra</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Bhindi Masala</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 30 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Okra sautéed with onions, tomatoes, and aromatic Indian spices. Great with rice.</p>
+            <a href="sixteen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-danger">Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+    
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="lemonrice.jpg" class="card-img-top" alt="Lemon Rice">
+          <div class="card-overlay">Zesty Twist</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Lemon Rice</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 15 mins |
+              <i class="fa-solid fa-users"></i> 2 Servings
+            </p>
+            <p class="card-text">Zesty South Indian rice dish with lemon juice, curry leaves, and cashews.</p>
+            <a href="seventeen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+            <span class="badge text-bg-success">Vegetarian</span>
+            <span class="badge text-bg-primary">South Indian</span>
+          </div>
+        </div>
+      </div>`,
+
+
+      `<div class="col">
+        <div class="card recipe-card h-100">
+          <img src="vegetablekorma.jpg" class="card-img-top" alt="Vegetable Korma">
+          <div class="card-overlay">Creamy Veggies</div>
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title">Vegetable Korma</h5>
+            <p class="recipe-info">
+              <i class="fa-solid fa-clock"></i> 35 mins |
+              <i class="fa-solid fa-users"></i> 4 Servings
+            </p>
+            <p class="card-text">Mixed vegetables simmered in a smooth, creamy coconut gravy with mild spices.</p>
+            <a href="eighteen.html" class="btn btn-primary-style w-100 mt-auto">View Recipe</a>
+          </div>
+          <div class="card-footer bg-transparent text-end">
+                    <button id="save-btn">❤️ Save Recipe</button>
+                        <button id="toggle-nutrition-btn">View Nutrition Facts</button>
+
+                                      <div id="nutrition-details" style="display:none; margin-top:10px;">
+                                        <p>Calories: 250 kcal</p>
+                                        <p>Protein: 10g</p>
+                                        <p>Fat: 8g</p>
+                                        <p>Carbohydrates: 30g</p>
+                                      </div>
+                                      <span></span>
+            <span class="badge text-bg-warning">Vegetarian</span>
+            <span class="badge text-bg-primary">South Indian</span>
+          </div>
+        </div>
+      </div>`
+    ];
+
+    const start = loadedCards;
+    const end = Math.min(loadedCards + batchSize, totalCards);
+    for (let i = start; i < end; i++) {
+      container.insertAdjacentHTML('beforeend', newCards[i]);
+    }
+    loadedCards = end;
+    if (loadedCards >= totalCards) {
+      document.getElementById('loadMoreBtn').style.display = 'none';
+    }
+  });
+
+  function debounce(func, delay) {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => func.apply(this, args), delay);
+    };
+  }
+
+  function filterCards(query) {
+    const cards = document.querySelectorAll('.recipe-card');
+    const trimmedQuery = query.trim().toLowerCase();
+    const queryWords = trimmedQuery.split(/\s+/).filter(word => word.length > 0);
+
+    let matchedCards = [];
+    let allCards = [];
+
+    cards.forEach(card => {
+      const titleElement = card.querySelector('.card-title');
+      const textElement = card.querySelector('.card-text');
+      
+      if (!titleElement || !textElement) return;
+      
+      const title = titleElement.textContent.toLowerCase();
+      const text = textElement.textContent.toLowerCase();
+      
+      const matches = queryWords.every(word => title.includes(word) || text.includes(word));
+      
+      allCards.push(card);
+      
+      if (matches && queryWords.length > 0) {
+        matchedCards.push(card);
+      }
+    });
+
+    const grid = document.getElementById('recipe-grid');
+    grid.innerHTML = '';
+
+    if (queryWords.length === 0) {
+      allCards.forEach(card => {
+        grid.appendChild(card);
+      });
+    } else {
+      matchedCards.forEach(card => {
+        grid.appendChild(card);
+      });
+    }
+
+    const noResultsElement = document.getElementById('no-results-message');
+    if (noResultsElement) {
+      noResultsElement.style.display = (queryWords.length > 0 && matchedCards.length === 0) ? 'block' : 'none';
+    }
+  }
+
+  const searchInput = document.getElementById('recipe-search-input');
+  if (searchInput) {
+    const debouncedFilter = debounce(function() {
+      filterCards(this.value);
+    }, 300);
+    searchInput.addEventListener('input', debouncedFilter);
+  }
+
+
+</script>
+
+
+
+
+<script>
+    
+    const carouselInner = document.querySelector('.carousel-inner');
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const indicators = document.querySelectorAll('.indicator');
+
+    let currentIndex = 0;
+    let autoPlayInterval;
+
+    function updateCarousel() {
+        console.log('Switching to slide:', currentIndex); 
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentIndex);
+        });
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+   
+    function nextSlide() {
+        currentIndex = (currentIndex + 1) % slides.length;
+        updateCarousel();
+    }
+
+    function prevSlide() {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        updateCarousel();
+    }
+
+    
+    function goToSlide(index) {
+        currentIndex = index;
+        updateCarousel();
+    }
+
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(nextSlide, 4000); 
+    }
+
+
+    document.querySelector('.carousel').addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    document.querySelector('.carousel').addEventListener('mouseleave', startAutoPlay);
+
+
+    if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+    if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+    });
+
+   
+    updateCarousel();
+    startAutoPlay();
+
+
+
+
+const saveBtn = document.getElementById('save-btn');
+saveBtn.addEventListener('click', () => {
+  const isSaved = saveBtn.classList.toggle('saved');
+  saveBtn.textContent = isSaved ? '✅ Saved!' : '❤️ Save Recipe';
+  alert(isSaved ? 'Recipe added to favorites!' : 'Recipe removed from favorites!');
+});
+
+
+const toggleNutritionBtn = document.getElementById('toggle-nutrition-btn');
+const nutritionDetails = document.getElementById('nutrition-details');
+toggleNutritionBtn.addEventListener('click', () => {
+  const isHidden = nutritionDetails.style.display === 'none';
+  nutritionDetails.style.display = isHidden ? 'block' : 'none';
+  toggleNutritionBtn.textContent = isHidden ? 'Hide Nutrition Facts' : 'View Nutrition Facts';
+});
+</script>
+
+</body>
+</html>
