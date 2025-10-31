@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spicy Paneer Tikka Masala | Kitchen Craft</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+
+ <style>
+        
+        :root {
+            --primary-color: #2D7D9A;    
+            --primary-hover: #1E5F7A;   
+            --secondary-color: #FF6B6B; 
+            --accent-color: #A8DADC;    
+            --neutral-bg: #F8F9FA;      
+            --text-color: #495057;    
+            --light-bg: #FFFFFF;        
+            --pastel-bg: #E9ECEF;       
+            --light-blue: #B3E5FC;     
+        }
+
+     
+        body {
+            background: 
+                linear-gradient(135deg, var(--neutral-bg) 0%, var(--pastel-bg) 50%, var(--light-blue) 100%),
+                radial-gradient(circle at 30% 30%, rgba(45, 125, 154, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 70% 70%, rgba(255, 107, 107, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.1) 0%, transparent 50%),
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAwIiBoZWlnaHQ9IjEwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48ZmlsdGVyIGlkPSJub2lzZSI+PGZlVHVyYnVsZW5jZSBiYXNlRnJlcXVlbmN5PSIwLjkiIG51bU9jdGF2ZXM9IjQiIHN0aXRjaFRpbGVzPSJzdGl0Y2giLz48L2ZpbHRlcj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsdGVyPSJ1cmwoI25vaXNlKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==') repeat,
+                url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgzMywgMTUwLCAyNDMsIDAuMDUpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat;
+            background-size: cover, 200px 200px, 150px 150px, 100px 100px, 150px 150px, 200px 200px;
+            background-blend-mode: overlay;
+            color: var(--text-color);
+            font-family: 'Nunito', sans-serif;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+      
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+            animation: shine 6s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+      
+        body::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 20%, rgba(45, 125, 154, 0.25) 3px, transparent 3px),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.2) 2px, transparent 2px),
+                radial-gradient(circle at 50% 50%, rgba(168, 218, 220, 0.2) 4px, transparent 4px),
+                radial-gradient(circle at 10% 90%, rgba(179, 229, 252, 0.3) 5px, transparent 5px);
+            background-size: 120px 120px, 180px 180px, 250px 250px, 150px 150px;
+            animation: floatParticles 12s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%); }
+            50% { transform: translateX(0%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes floatParticles {
+            0% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(10px) rotate(240deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+      
+        body > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        
+        .navbar {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--accent-color);
+        }
+        .navbar-brand {
+            font-family: 'Pacifico', cursive;
+            font-size: 2rem;
+            color: var(--primary-color) !important;
+        }
+        .navbar-brand img {
+            border-radius: 50%;
+            border: 3px solid var(--primary-hover);
+            box-shadow: 0 0 10px rgba(255, 107, 107, 0.3);
+        }
+        .nav-link {
+            color: var(--text-color) !important;
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+            transform: translateY(-2px);
+        }
+        .btn-primary-style {
+            background: var(--primary-color);
+            border: none;
+            color: var(--light-bg);
+            border-radius: 30px;
+            padding: 0.5rem 1.5rem;
+            transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(45, 125, 154, 0.3);
+        }
+        .btn-primary-style:hover {
+            background: var(--primary-hover);
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(45, 125, 154, 0.4);
+        }
+
+   
+        .recipe-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--accent-color);
+        }
+        .recipe-image {
+            width: 75%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: brightness(1.1) contrast(1.1) saturate(1.3);
+        }
+        .recipe-image:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2) contrast(1.2) saturate(1.4);
+        }
+        .recipe-title {
+            color: var(--text-color);
+            font-weight: 700;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .recipe-meta {
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .recipe-description {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Ingredients and Instructions */
+        .section-title {
+            color: var(--primary-color);
+            font-weight: 700;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        .ingredients-list, .instructions-list {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--accent-color);
+        }
+        .ingredients-list ul, .instructions-list ol {
+            padding-left: 1.5rem;
+        }
+        .ingredients-list li, .instructions-list li {
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        /* Badges */
+        .badge {
+            font-weight: 600;
+            padding: 0.5em 1em;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .text-bg-warning { background: var(--secondary-color) !important; color: var(--text-color) !important; }
+        .text-bg-danger { background: #E76F51 !important; color: var(--light-bg) !important; }
+        .text-bg-success { background: var(--accent-color) !important; color: var(--light-bg) !important; }
+
+        /* Footer: Warm and connected */
+        .footer-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            padding: 50px 0;
+            margin-top: 6rem;
+            color: var(--light-bg);
+            position: relative;
+        }
+        .footer-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48cGF0dGVybiBpZD0id2F2ZXMiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHdpZHRoPSIyMDAiIGhlaWdodD0iMjAwIj48cGF0aCBkPSJNMCwxMDAgQzUwLDUwIDE1MCwxNTAgMjAwLDEwMCBMMjAwLDIwMCBMMCwyMDAgWiIgZmlsbD0icmdiYSgyNTUsIDI1NSwgMjU1LCAwLjEpIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI3dhdmVzKSIvPjwvc3ZnPg==') repeat;
+            opacity: 0.1;
+            z-index: 0;
+        }
+        .footer-section > * {
+            position: relative;
+            z-index: 1;
+        }
+        .social-icon {
+            color: var(--light-bg);
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease, transform 0.2s ease;
+        }
+        .social-icon:hover {
+            color: var(--secondary-color);
+            transform: scale(1.2);
+        }
+
+        /* Back Button */
+        .back-btn {
+            margin-bottom: 2rem;
+        }
+    </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <i class="fa-solid fa-utensils me-2"></i> Kitchen Craft
+            <img src="p1.png" alt="Kitchen Craft Logo" style="height: 50px; width: 50px; margin-left: 10px;">
+        </a>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="index.html"><i class="fa-solid fa-home me-1"></i>Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="cookbooks.html"><i class="fa-solid fa-book me-1"></i>Cookbooks</a></li>
+                <li class="nav-item"><a class="nav-link" href="ingredients.html"><i class="fa-solid fa-carrot me-1"></i>Ingredients</a></li>
+                <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa-solid fa-info-circle me-1"></i>About Us</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user-shield me-1"></i>Admin
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="adminDropdown">
+                        <li><a class="dropdown-item" href="admin-dashboard.html">Dashboard</a></li>
+                        <li><a class="dropdown-item" href="admin.html">Admin Panel</a></li>
+                        <li><a class="dropdown-item" href="admin-management.html">Management</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link btn btn-primary-style ms-lg-3" href="signup.html"><i class="fa-solid fa-user-plus me-1"></i>Sign Up</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+    <main class="container my-5">
+        <div class="back-btn">
+            <a href="index.html" class="btn btn-primary-style"><i class="fa-solid fa-arrow-left me-2"></i>Back to Recipes</a>
+        </div>
+
+<div class="recipe-header">
+    <img src="chanamasala.jpg" alt="Chana Masala" class="recipe-image">
+    <h1 class="recipe-title">Chana Masala</h1>
+    <p class="recipe-meta">
+        <i class="fa-solid fa-clock"></i> 40 mins | 
+        <i class="fa-solid fa-users"></i> 4 Servings | 
+        <i class="fa-solid fa-fire"></i> Medium Spice
+    </p>
+    <p class="recipe-description">A hearty and flavorful chickpea curry cooked in a spicy tomato-onion gravy, perfect served with rice or roti.</p>
+    <div>
+        <span class="badge text-bg-warning">Vegetarian</span> 
+        <span class="badge text-bg-danger">Indian</span>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-6">
+        <h2 class="section-title"><i class="fa-solid fa-list me-2"></i>Ingredients</h2>
+        <div class="ingredients-list">
+            <ul>
+                <li>¾ cup dried chickpeas (or 2 cans cooked chickpeas)</li>
+                <li>2-3 tbsp oil</li>
+                <li>1 tsp cumin seeds</li>
+                <li>1 large onion, finely chopped</li>
+                <li>2 medium tomatoes, pureed or chopped</li>
+                <li>1 tbsp ginger-garlic paste</li>
+                <li>1 ½ tsp red chili powder</li>
+                <li>¾ tsp coriander powder</li>
+                <li>1 tsp garam masala or chana masala powder</li>
+                <li>1 teaspoon fennel seeds (for grinding)</li>
+                <li>½ teaspoon black pepper (for grinding)</li>
+                <li>Salt to taste</li>
+                <li>Fresh coriander leaves for garnish</li>
+                <li>Lemon juice from half a lemon (optional)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="col-lg-6">
+        <h2 class="section-title"><i class="fa-solid fa-utensils me-2"></i>Instructions</h2>
+        <div class="instructions-list">
+            <ol>
+                <li>Soak dried chickpeas overnight. Pressure cook with water until soft. Drain and keep the cooking liquid.</li>
+                <li>Heat oil in a pan, add cumin seeds till they splutter.</li>
+                <li>Sauté finely chopped onions till golden. Add ginger-garlic paste and cook till raw smell disappears.</li>
+                <li>Add chopped tomatoes and cook until oil separates.</li>
+                <li>Grind fennel seeds and black pepper to a powder and add to the pan along with chili powder, coriander powder, garam masala, and salt. Mix well and cook until fragrant.</li>
+                <li>Add cooked chickpeas with some cooking water. Cook uncovered on medium heat for 10 minutes until thickened.</li>
+                <li>Garnish with fresh coriander leaves and lemon juice to taste.</li>
+                <li>Serve hot with bhatura, roti, or rice.</li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+
+        <div class="text-center mt-4">
+            <a href="index.html" class="btn btn-primary-style btn-lg">Explore More Recipes</a>
+        </div>
+    </main>
+
+    <footer class="footer-section">
+        <div class="container text-center">
+            <h2 class="mb-3 text-white">Kitchen Craft</h2>
+            <p class="small text-white-50">Cook Smarter, Not Harder. All Rights Reserved &copy; 2025</p>
+
+            <div class="mt-4">
+                <a href="https://www.facebook.com/" class="social-icon" aria-label="Follow us on Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/accounts/login/?hl=en" class="social-icon" aria-label="Follow us on Instagram">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://myaccount.google.com/" class="social-icon" aria-label="Follow us on Google">
+                    <i class="fa-brands fa-google"></i>
+                </a>
+                <a href="https://mail.google.com/mail/u/0/#inbox" class="social-icon" aria-label="Contact us via Email">
+                    <i class="fa-solid fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
